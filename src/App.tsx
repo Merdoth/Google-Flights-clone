@@ -1,11 +1,11 @@
 
+import FlightsHome from './components/FlightsHome';
 
 function App() {
-
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
+    <div>
+      <FlightsHome />
+    </div>
   )
 }
 
