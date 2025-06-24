@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 interface CityDetails  {
     src: string;
@@ -15,12 +16,15 @@ interface CitiesCardProps {
 
 
 const CitiesCard = ({ citiesDetails }: CitiesCardProps) => {
+  const navigate = useNavigate();
 
   return (
 
           <Box className="cities-cont" sx={{ width: "auto", mt: 2,  display: "flex", alignItems: "start",  gap: 4}}>
             {citiesDetails.map((cityDets, index: number) => (
-              <Box className="citi" sx={{ width: "auto", display: "flex", flexDirection: "column",}} key={index}>
+              <Box className="citi" sx={{ width: "auto", display: "flex", flexDirection: "column", cursor: "pointer"}} key={index} onClick={() => navigate("/flight-details")}  role="button" // Better accessibility
+      tabIndex={0} // Make it focusable
+>
                 <Box className="citi-img" sx={{ width: "225px", height: "110px"}}>
                 <img src={cityDets?.src} alt="city of liston" />
                 </Box>

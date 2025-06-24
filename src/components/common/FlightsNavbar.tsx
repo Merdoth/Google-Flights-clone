@@ -13,10 +13,12 @@ import {
   useTheme,
 } from "@mui/material";
 import useThemeMode from "../../hooks/useContext";
+import { useNavigate } from "react-router-dom";
 
-const FlightsNav = () => {
+const FlightsNavbar = () => {
   const { isDay, toggleTheme } = useThemeMode();
   const theme = useTheme(); // 👈 get current MUI theme
+  const navigate = useNavigate();
 
   return (
     <AppBar
@@ -43,6 +45,8 @@ const FlightsNav = () => {
             src={`${isDay ? "/logo-light.png" : "/logo-dark.png"}`}
             alt="App Logo"
             className="logo"
+            style={{ cursor: "pointer"}}
+            onClick={() => navigate("/")}
           />
         </Box>
 
@@ -78,4 +82,4 @@ const FlightsNav = () => {
   );
 };
 
-export default FlightsNav;
+export default FlightsNavbar;
