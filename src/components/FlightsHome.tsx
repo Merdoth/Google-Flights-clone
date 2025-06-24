@@ -1,9 +1,9 @@
 import { Box, Button, Container, Tooltip, Typography } from "@mui/material";
-import FlightsNavbar from "./common/FlightsNavbar";
 import useThemeMode from "../hooks/useContext";
 import FlightsSearchCard from "./FlightsSearchCard";
-import { InfoOutlined, SearchOutlined } from "@mui/icons-material";
+import { InfoOutlined } from "@mui/icons-material";
 import CitiesCard from "./common/CitiesCard";
+// import { useSearchFlights } from "../hooks/useSearchFlights";
 
 
 const FlightsHome = () => {
@@ -46,9 +46,6 @@ const FlightsHome = () => {
 
   return (
     <div>
-      {/* Navbar */}
-      <FlightsNavbar />
-
       {/* Home container */}
       <Container
         className="home-container"
@@ -91,33 +88,7 @@ const FlightsHome = () => {
           </Typography>
         </Box>
         <FlightsSearchCard />
-        <Button
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 1,
-            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-            borderRadius: 10,
-            px: 2,
-            py: 1,
-            bgcolor: isDay ? "#1e65c9" : "#8ab6fc",
-            color: isDay ? "#fff" : "#2c2f37",
-            mt: -3,
-            "&:hover": { bgcolor: isDay ? "#1250a7" : "#9dc0f9" },
-          }}
-        >
-          <SearchOutlined />
-          <Typography
-            variant="h5"
-            fontSize={13}
-            fontWeight={600}
-            textTransform={"capitalize"}
-          >
-            Explore
-          </Typography>
-        </Button>
-
+        
         <Box className="explore-map" sx={{ mt: 4,  width: "88%", px: 1.4}}>
           <Typography variant="h6" sx={{textAlign: "left", display: "flex", alignItems: "center", justifyContent: "left", fontSize: 19, fontWeight: 600}}>Find cheap flights from Lagos to anywhere 
             <Tooltip title="This is a tooltip with more information" arrow>

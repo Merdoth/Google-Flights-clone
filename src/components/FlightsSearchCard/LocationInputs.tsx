@@ -19,6 +19,8 @@ const LocationInputs = ({ from, to, setFrom, setTo, isDay }: {
           sm: "block",
         }}} />
         <InputBase value={from} onChange={(e) => setFrom(e.target.value)} sx={{ color: isDay ? "#5d5f62" : "#dcdee2", fontSize: 16, width: "auto" }} />
+
+        
       </Box>
 
       {/* Swap Icon */}
