@@ -31,6 +31,7 @@ import { toast } from 'react-toastify';
 
 
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 type PassengerType = "adults" | "children" | "infants";
 type FlightsSearchCardProps = {
@@ -188,6 +189,42 @@ const FlightsSearchCard = ({ useExploreEverywhere = false }: FlightsSearchCardPr
     toast.error(error);
   }
 }, [error]);
+
+ // geocoding with Axios
+useEffect(() => {
+  const getUserCity = async () => {
+    try {
+      if (!navigator.geolocation) return;
+
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+
+        // Reverse geocoding using Axios
+        const response = await axios.get(
+          "https://api.bigdatacloud.net/data/reverse-geocode-client",
+          {
+            params: {
+              latitude,
+              longitude,
+              localityLanguage: "en",
+            },
+          }
+        );
+
+        const data = response.data;
+
+        // Update `from` field with best location info
+        if (data.city) setFrom(data.city);
+        else if (data.locality) setFrom(data.locality);
+        else if (data.principalSubdivision) setFrom(data.principalSubdivision);
+      });
+    } catch (err) {
+      console.error("📍 Location detection failed:", err);
+    }
+  };
+
+  getUserCity();
+}, []);
 
   return (
     <>
