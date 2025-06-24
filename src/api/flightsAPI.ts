@@ -79,3 +79,4 @@ export const searchEverywhere = async ({
 
   return response.data;
 };
+

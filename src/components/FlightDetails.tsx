@@ -90,7 +90,10 @@ const FlightsDetails = () => {
             <Divider>-.-.-.-.-.-.-.-.-.-.-</Divider>
             <Typography
               variant="body1"
-              sx={{ mt: 2, fontSize: 19, color: isDay ? "#5d5f62" : "#e1dfdf" }}
+              sx={{ mt: 2, fontSize: {
+                sm: 19,
+                xs: 14
+              }, textAlign: "center", color: isDay ? "#5d5f62" : "#e1dfdf" }}
             >
               No flight results found. Try searching again.
             </Typography>
